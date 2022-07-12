@@ -7,58 +7,50 @@ use Illuminate\Http\Request;
 
 class FactureUserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
-        return FactureUser::all(['FactureUser' => []]);
+        return FactureUser::all();
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+        //il travail avec POST
     public function store(Request $request)
     {
-        //
+        $facture = new FactureUser();
+        $facture->mois = $request->mois;
+        $facture->montant = $request->montant;
+        $facture->type = $request->type;
+        $facture->idUser = $request->idUser;
+        $facture->etat = false;
+        
+        $facture->save();
+
+        return response()->json(["Status" => "Success","Etat" => "Facture creer"], 200);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+        //il travail avec GET
     public function show($id)
     {
-        //
+        $facture = FactureUser::find($id);
+        return response()->json(["Status" => "Success","Facture" => $facture], 200);
+
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+        //il travail avec PUT/PATCH
     public function update(Request $request, $id)
     {
-        //
-    }
+        $facture = FactureUser::find($id);
+        $facture->etat = true;
+        
+        $facture->save();
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+        return response()->json(["Status" => 'Success'], 200);
+    }
+    
+
+    //il travail avec DELETE
     public function destroy($id)
     {
-        //
+        $facture = FactureUser::where('id', $id)->delete();
     }
 }

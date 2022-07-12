@@ -9,7 +9,11 @@ class FactureGlobale extends Model
 
     protected $table = 'factureGlobale';
     public $timestamps = true;
-    protected $fillable = array('mois', 'etatFacture', 'etatElectricite', 'etatEau', 'etatWifi', 'montantEau', 'montantElectricite', 'montantWifi', 'montantFacture');
+    protected $fillable = array(
+        'mois', 'etatFacture', 'etatElectricite', 
+        'etatEau', 'etatWifi', 'montantEau', 
+        'montantElectricite', 'montantWifi', 
+        'montantFacture', 'idAppartement');
 
     public function appartements()
     {

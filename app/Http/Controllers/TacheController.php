@@ -7,56 +7,39 @@ use Illuminate\Http\Request;
 
 class TacheController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         return Tache::all(); 
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $tache = new Tache();
+
+        $tache->nom = $request->nom;
+        $tache->type = $request->type;
+        $tache->dureeAlternance = $request->dureeAlternance;
+        $tache->nombreParticipant = $request->nombreParticipant;
+        $tache->idAppartement = $request->idAppartement;
+
+        $tache->save();
+
+        return response()->json(["Status"=>"Success"], 200);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
+        $tache = Tache::find($id);
+        return response()->json(["Status"=>"Success", "tache"=> $tache], 200);
+
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //

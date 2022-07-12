@@ -15,6 +15,7 @@ class CreateUserTable extends Migration {
 			$table->integer('contact');
 			$table->string('email')->nullable();
 			$table->string('role');
+			$table->integer('idAppartement')->unsigned();
 		});
 	}
 

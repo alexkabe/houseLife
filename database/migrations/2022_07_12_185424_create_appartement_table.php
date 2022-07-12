@@ -12,6 +12,7 @@ class CreateAppartementTable extends Migration {
 			$table->timestamps();
 			$table->string('nom');
 			$table->integer('montant')->default('0');
+			$table->boolean('etatSuppression');
 		});
 	}
 

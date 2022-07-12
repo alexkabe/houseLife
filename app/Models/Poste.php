@@ -9,10 +9,11 @@ class Poste extends Model
 
     protected $table = 'poste';
     public $timestamps = true;
+    protected $fillable = array('auteur');
 
-    public function appartement()
+    public function user()
     {
-        return $this->belongsTo('Appartement');
+        return $this->belongsTo('App\Models\User');
     }
 
 }

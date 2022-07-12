@@ -19,6 +19,7 @@ class CreateFactureGlobaleTable extends Migration {
 			$table->integer('montantElectricite');
 			$table->integer('montantWifi');
 			$table->integer('montantFacture');
+			$table->integer('idAppartement')->unsigned();
 		});
 	}
 

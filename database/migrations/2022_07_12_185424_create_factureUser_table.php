@@ -14,6 +14,7 @@ class CreateFactureUserTable extends Migration {
 			$table->string('type');
 			$table->boolean('etat');
 			$table->integer('montant');
+			$table->integer('idUser')->unsigned();
 		});
 	}
 

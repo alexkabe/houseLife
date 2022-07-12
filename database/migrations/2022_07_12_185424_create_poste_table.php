@@ -11,7 +11,7 @@ class CreatePosteTable extends Migration {
 			$table->increments('id');
 			$table->timestamps();
 			$table->string('message');
-			$table->string('auteur');
+			$table->integer('auteur')->unsigned();
 			$table->timestamp('dateDebut');
 			$table->timestamp('dateFin');
 			$table->integer('duree');

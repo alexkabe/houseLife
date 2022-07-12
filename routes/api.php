@@ -38,7 +38,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // });
 
 Route::apiResources([
-    'appartement' => AppartementController::class,
+    // 'appartement' => AppartementController::class,
     'factureGlobale' => FactureGlobaleController::class,
     'factureUser' => FactureUserController::class,
     'user' => UserController::class,
@@ -50,19 +50,37 @@ Route::apiResources([
 // les routes specifique de toutes classe
 
 // Appartement
+Route::apiResource('appartement', AppartementController::class)->only([
+    'index', 'store', 'destroy', 'show'
+]);
+
 
 
 // FactureGlobale
-
+Route::apiResource('factureGlobale', FactureGlobaleController::class)->only([
+    'index', 'store', 'destroy', 'show'
+]);
+Route::post('/saveFacture', [FactureGlobaleController::class, 'save']);
 
 //FactureUser
-
+Route::apiResource('factureUser', FactureUserController::class)->only([
+    'index', 'store', 'destroy', 'show'
+]);
 
 // User
-
+Route::apiResource('user', UserController::class)->only([
+    'index', 'store', 'destroy', 'show'
+]);
 
 //Poste
+Route::apiResource('poste', PosteController::class)->only([
+    'index', 'store', 'destroy', 'show'
+]);
+
 Route::get('posteOrder', [PosteController::class, 'order']);
 
 
 // Tache
+Route::apiResource('tache', TacheController::class)->only([
+    'index', 'store', 'destroy', 'show'
+]);

@@ -9,6 +9,7 @@ class Tache extends Model
 
     protected $table = 'tache';
     public $timestamps = true;
+    protected $fillable = array('idAppartement');
 
     public function appartements()
     {

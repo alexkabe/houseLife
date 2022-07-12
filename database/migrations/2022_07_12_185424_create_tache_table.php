@@ -14,6 +14,7 @@ class CreateTacheTable extends Migration {
 			$table->string('type');
 			$table->integer('dureeAlternance');
 			$table->smallInteger('nombreParticipant');
+			$table->integer('idAppartement')->unsigned();
 		});
 	}
 
