@@ -4,16 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Tache extends Model 
-{
+class Tache extends Model {
 
-    protected $table = 'tache';
-    public $timestamps = true;
-    protected $fillable = array('idAppartement');
+	protected $table = 'tache';
+	public $timestamps = true;
+	protected $fillable = array('idAppartement');
 
-    public function appartements()
-    {
-        return $this->belongsTo('Appartement');
-    }
+	public function appartements()
+	{
+		return $this->belongsTo('Appartement');
+	}
 
 }

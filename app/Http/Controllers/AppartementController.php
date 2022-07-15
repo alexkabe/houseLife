@@ -18,7 +18,9 @@ class AppartementController extends Controller
         
         $app->nom = $request->nom;
         $app->montant = $request->montant;
-        $app->etatSuppression = 'false';
+        $app->etatSuppression = false;
+        echo $app;
+        
         $app->save();
 
         return response()->json(['appartements'=> Appartement::all()], 200);

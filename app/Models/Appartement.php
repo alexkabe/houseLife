@@ -3,27 +3,31 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models;
-class Appartement extends Model 
-{
 
-    protected $table = 'appartement';
-    public $timestamps = true;
-    protected $fillable = array('nom', 'montant', 'etatSuppression');
+class Appartement extends Model {
 
-    public function taches()
-    {
-        return $this->hasMany('App\Models\Tache', 'idAppartement');
-    }
+	protected $table = 'appartement';
+	public $timestamps = true;
+	protected $fillable = array('nom', 'montant', 'etatSuppression', 'idAdmin');
 
-    public function users()
-    {
-        return $this->hasMany('App\Models\User', 'idAppartement');
-    }
+	public function taches()
+	{
+		return $this->hasMany('App\Models\Tache', 'idAppartement');
+	}
 
-    public function factureGlobales()
-    {
-        return $this->hasMany('App\Models\FactureGlobale', 'idAppartement');
-    }
+	public function factureGlobales()
+	{
+		return $this->hasMany('App\Models\FactureGlobale', 'idAppartement');
+	}
+
+	public function adminUsers()
+	{
+		return $this->belongsToMany('App\Models\AdminUser', 'id');
+	}
+
+	public function tenants()
+	{
+		return $this->hasMany('App\Models\Tenants', 'idAppartement');
+	}
 
 }

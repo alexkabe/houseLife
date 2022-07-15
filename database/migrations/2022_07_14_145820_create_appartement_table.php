@@ -13,6 +13,7 @@ class CreateAppartementTable extends Migration {
 			$table->string('nom');
 			$table->integer('montant')->default('0');
 			$table->boolean('etatSuppression');
+			$table->integer('idAdmin')->unsigned();
 		});
 	}
 
